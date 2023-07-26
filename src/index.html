@@ -7,6 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>todo list</h1>
-</body>
+    <div class="container">
+        <div class="card">
+            <h1>Today's To Do</h1>
+            <button class="btn ref-btn" id="refresh-btn" type="button"></button>
+        </div>
+        <div class="card">
+            <input type="text" class="inp" placeholder="Add to your list...">
+            <button class="btn insert-btn" id="enter" type="button"></button>
+        </div>
+        <div id="list"></div>
+        <div class="card card-clear">
+            <button class="btn" id="btn-clear" type="button">Clear all completed</button>
+        </div>
+    </div>
 </html>

@@ -8,7 +8,10 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: "[name].js",
+        clean: true,
+        assetModuleFilename: '[name][ext]'
     },
+    devtool: 'source-map',
     devServer: {
         static: {
             directory: path.resolve(__dirname, 'dis'),
@@ -25,6 +28,10 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
             },
+            {
+                test: /\.(png|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+            }
         ],
     },
     plugins: [
