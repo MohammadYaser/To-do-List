@@ -1,2 +1,2 @@
 import './style.css';
-import './crud.js'
+import './crud.js';
