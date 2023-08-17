@@ -3,6 +3,22 @@ const listCard = document.getElementById('list');
 const insertInput = document.getElementById('insert');
 const enterBtn = document.getElementById('enterBtn');
 
+const updateIndexes = () => {
+  listTasks.forEach((task, index) => {
+    task.index = index;
+  });
+};
+
+const updateLocalStorage = () => {
+  localStorage.setItem('tasks', JSON.stringify(listTasks));
+};
+
+const deleteTask = (index) => {
+  listTasks.splice(index, 1);
+  updateIndexes();
+  updateLocalStorage();
+};
+
 const renderTasks = () => {
   listCard.innerHTML = '';
   listTasks.forEach((task, index) => {
@@ -30,29 +46,12 @@ const addTask = (description) => {
   const newTask = {
     description,
     completed: false,
-    index: listTasks.length
+    index: listTasks.length,
   };
   listTasks.push(newTask);
   updateIndexes();
   updateLocalStorage();
   renderTasks();
-};
-
-const deleteTask = (index) => {
-  listTasks.splice(index, 1);
-  updateIndexes();
-  updateLocalStorage();
-  renderTasks();
-};
-
-const updateIndexes = () => {
-  listTasks.forEach((task, index) => {
-    task.index = index;
-  });
-};
-
-const updateLocalStorage = () => {
-  localStorage.setItem('tasks', JSON.stringify(listTasks));
 };
 
 enterBtn.addEventListener('click', () => {
