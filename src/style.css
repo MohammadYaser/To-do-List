@@ -62,8 +62,8 @@
   background-size: contain;
 }
 
-.btn-drag {
-  background: url('./assets/move.png');
+.btn-delete {
+  background: url('./assets/trash.png');
   background-size: contain;
   margin-left: auto;
 }

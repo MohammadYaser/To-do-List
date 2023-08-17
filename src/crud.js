@@ -1,31 +1,66 @@
-import './style.css';
-
-const listTasks = [
-  {
-    description: 'Going to Office',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Meeting with ali',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Go to market',
-    completed: false,
-    index: 2,
-  },
-
-];
+const listTasks = JSON.parse(localStorage.getItem('tasks')) || [];
 const listCard = document.getElementById('list');
-listTasks.forEach((arr) => {
-  const task = `
-    <div class="card-task">
-        <input type="checkbox">
-        <div class="card list">${arr.description}</div>
-        <button class="btn btn-drag" type="button"></button>
-    <div>
-  `;
-  listCard.insertAdjacentHTML('beforeend', task);
+const insertInput = document.getElementById('insert');
+const enterBtn = document.getElementById('enterBtn');
+
+const renderTasks = () => {
+  listCard.innerHTML = '';
+  listTasks.forEach((task, index) => {
+    const taskElement = document.createElement('div');
+    taskElement.innerHTML = `
+      <div class="card-task">
+        <input type="checkbox" ${task.completed ? 'checked' : ''}>
+        <div class="card list">${task.description}</div>
+        <button class="btn btn-delete" type="button"></button>
+      </div>`;
+    const deleteButton = taskElement.querySelector('.btn-delete');
+    deleteButton.addEventListener('click', () => {
+      deleteTask(index);
+    });
+    taskElement.querySelector('input').addEventListener('change', () => {
+      task.completed = !task.completed;
+      updateLocalStorage();
+      renderTasks();
+    });
+    listCard.appendChild(taskElement);
+  });
+};
+
+const addTask = (description) => {
+  const newTask = {
+    description,
+    completed: false,
+    index: listTasks.length
+  };
+  listTasks.push(newTask);
+  updateIndexes();
+  updateLocalStorage();
+  renderTasks();
+};
+
+const deleteTask = (index) => {
+  listTasks.splice(index, 1);
+  updateIndexes();
+  updateLocalStorage();
+  renderTasks();
+};
+
+const updateIndexes = () => {
+  listTasks.forEach((task, index) => {
+    task.index = index;
+  });
+};
+
+const updateLocalStorage = () => {
+  localStorage.setItem('tasks', JSON.stringify(listTasks));
+};
+
+enterBtn.addEventListener('click', () => {
+  const newTaskDescription = insertInput.value.trim();
+  if (newTaskDescription !== '') {
+    addTask(newTaskDescription);
+    insertInput.value = '';
+  }
 });
+
+renderTasks();
