@@ -34,6 +34,7 @@ The To-Do List Project, created solely by me, showcases my skills in JavaScript 
 <br>
 
 ### Key Features <a name="key-features"></a>
+With this To Do List project we can create update and delete one or more tasks
 
 <br>
 
