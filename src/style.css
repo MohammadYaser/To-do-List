@@ -68,6 +68,12 @@
   margin-left: auto;
 }
 
+.btn-edit {
+  background: url('./assets/edit.svg');
+  background-size: contain;
+  
+}
+
 #btn-clear {
   color: #636363;
   font-size: 20px;

@@ -28,7 +28,20 @@ const renderTasks = () => {
         <input type="checkbox" ${task.completed ? 'checked' : ''}>
         <div class="card list">${task.description}</div>
         <button class="btn btn-delete" type="button"></button>
+        <button class="btn btn-edit" type="button"></button>
       </div>`;
+    const editButton = taskElement.querySelector('.btn-edit');
+    const editTaskDescription = (index) => {
+      const newDescription = prompt('Edit task description:', listTasks[index].description);
+      if (newDescription !== null) {
+        listTasks[index].description = newDescription;
+        updateLocalStorage();
+        renderTasks();
+      }
+    };
+    editButton.addEventListener('click', () => {
+      editTaskDescription(index);
+    });
     const deleteButton = taskElement.querySelector('.btn-delete');
     deleteButton.addEventListener('click', () => {
       deleteTask(index);
