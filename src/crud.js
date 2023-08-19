@@ -5,18 +5,12 @@ const enterBtn = document.getElementById('enterBtn');
 
 const updateIndexes = () => {
   listTasks.forEach((task, index) => {
-    task.index = index;
+    task.index = index + 1;
   });
 };
 
 const updateLocalStorage = () => {
   localStorage.setItem('tasks', JSON.stringify(listTasks));
-};
-
-const deleteTask = (index) => {
-  listTasks.splice(index, 1);
-  updateIndexes();
-  updateLocalStorage();
 };
 
 const renderTasks = () => {
@@ -39,6 +33,12 @@ const renderTasks = () => {
         renderTasks();
       }
     };
+    const deleteTask = (index) => {
+      listTasks.splice(index, 1);
+      updateIndexes();
+      updateLocalStorage();
+      renderTasks();
+    };
     editButton.addEventListener('click', () => {
       editTaskDescription(index);
     });
@@ -55,12 +55,7 @@ const renderTasks = () => {
   });
 };
 
-const addTask = (description) => {
-  const newTask = {
-    description,
-    completed: false,
-    index: listTasks.length,
-  };
+const addTask = (newTask) => {
   listTasks.push(newTask);
   updateIndexes();
   updateLocalStorage();
@@ -69,8 +64,13 @@ const addTask = (description) => {
 
 enterBtn.addEventListener('click', () => {
   const newTaskDescription = insertInput.value.trim();
+  const newTask = {
+    description: newTaskDescription,
+    completed: false,
+    index: listTasks.length + 1,
+  };
   if (newTaskDescription !== '') {
-    addTask(newTaskDescription);
+    addTask(newTask);
     insertInput.value = '';
   }
 });
