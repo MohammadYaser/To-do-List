@@ -1,4 +1,5 @@
-import { toggleStatus, clearCompleted } from './modules/status.js';
+import { clearCompleted } from './modules/status.js';
+
 let listTasks = JSON.parse(localStorage.getItem('tasks')) || [];
 const listCard = document.getElementById('list');
 const insertInput = document.getElementById('insert');
