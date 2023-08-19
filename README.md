@@ -6,7 +6,6 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
@@ -40,9 +39,6 @@ With this To Do List project we can create update and delete one or more tasks
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-## 🚀 Live Demo & Video presentation <a name="live-demo"></a> <a name='video'></a>
 <br>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
