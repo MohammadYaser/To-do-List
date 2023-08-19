@@ -1,4 +1,5 @@
-const listTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+import { toggleStatus, clearCompleted } from './modules/status.js';
+let listTasks = JSON.parse(localStorage.getItem('tasks')) || [];
 const listCard = document.getElementById('list');
 const insertInput = document.getElementById('insert');
 const enterBtn = document.getElementById('enterBtn');
@@ -73,6 +74,14 @@ enterBtn.addEventListener('click', () => {
     addTask(newTask);
     insertInput.value = '';
   }
+});
+
+const clearCompletedButton = document.getElementById('btn-clear');
+clearCompletedButton.addEventListener('click', () => {
+  listTasks = clearCompleted(listTasks); // Remove completed tasks
+  updateIndexes(); // Update task indexes
+  updateLocalStorage(); // Store the updated tasks in local storage
+  renderTasks(); // Refresh the task list
 });
 
 renderTasks();
