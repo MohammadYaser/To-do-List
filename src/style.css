@@ -62,10 +62,15 @@
   background-size: contain;
 }
 
-.btn-drag {
-  background: url('./assets/move.png');
+.btn-delete {
+  background: url('./assets/trash.png');
   background-size: contain;
   margin-left: auto;
+}
+
+.btn-edit {
+  background: url('./assets/edit.svg');
+  background-size: contain;
 }
 
 #btn-clear {
